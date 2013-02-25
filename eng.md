@@ -1,3 +1,6 @@
+MindBEMding – getting your head ’round BEM syntax
+--------------------------------------------------------------------------------
+
 One of the questions I get asked most frequently is <q>what do `--` and `__`
 mean in your classes?</q>
 
