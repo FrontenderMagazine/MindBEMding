@@ -22,6 +22,7 @@
 фактических изменений в обозначениях, улучшенная версия основана на тех же
 принципах БЭМ.
 
+
 Система именования использует такой шаблон:
 
     .block{}
@@ -47,7 +48,7 @@
 *модификатором* компонента.
 
 Подумайте как следующие селекторы могут быть связаны:
- 
+
     .person{}
     .person__hand{}
     .person--female{}
@@ -93,8 +94,9 @@
 
 Давайте рассмотрим ещё один пример…
 
-Если вы знакомы с OOCSS, то не возникнет трудностей и с 
-абстракцией [медиа объекта][5].
+Если вы знакомы с OOCSS, то не возникнет трудностей и с абстракцией
+[медиа объекта][5].
+
 Обретая форму БЭМ, медиа объект теперь выглядит так:
 
     .media{}
@@ -227,3 +229,4 @@
  [3]: http://yandex.ru "Яндекс"
  [4]: http://nicolasgallagher.com/about-html-semantics-front-end-architecture/ "About HTML semantics and front-end architecture"
  [5]: http://stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code "The media object saves hundreds of lines of code"
+
