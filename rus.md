@@ -25,9 +25,11 @@
 
 Система именования использует такой шаблон:
 
-    .block{}
-    .block__element{}
-    .block--modifier{}
+~~~~ .language-css
+.block{}
+.block__element{}
+.block--modifier{}
+~~~~
 
 * `.block` — самый высокий уровень абстракции или компонента.
 * `.block__element` — дочерний элемент `.block` помогающий сфомировать `.block` как монолитный элемент.
@@ -36,9 +38,11 @@
 Двойные символы используются вместо одиночных из-за того, что класс может быть
 сам по себе разделён дефисом, например:
 
-<pre><code>.site-search{} <span class="code-comment">/* Блок */</span>
+~~~~ .language-css
+.site-search{} <span class="code-comment">/* Блок */</span>
 .site-search__field{} <span class="code-comment">/* Элемент */</span>
-.site-search--full{} <span class="code-comment">/* Модификатор */</span></code></pre>
+.site-search--full{} <span class="code-comment">/* Модификатор */</span>
+~~~~
 
 Цель БЭМ — рассказать другим разработчикам как можно больше о том, что делает
 кусок кода, только по названиям классам в разметке. Читая HTML с небольшим
@@ -49,22 +53,26 @@
 
 Подумайте как следующие селекторы могут быть связаны:
 
-    .person{}
-    .person__hand{}
-    .person--female{}
-    .person--female__hand{}
-    .person__hand--left{}
+~~~~ .language-css
+.person{}
+.person__hand{}
+.person--female{}
+.person--female__hand{}
+.person__hand--left{}
+~~~~
 
 Верхний блок это человек (`.person`), имеющий элементы, к примеру руки
 (`.hand`). Человек может быть разным, например женского пола (`.female`), и эта
 вариация, в свою очередь имеет свои элементы. Ещё раз, тоже самое, но записанное
 в «обычном» CSS:
 
-    .person{}
-    .hand{}
-    .female{}
-    .female-hand{}
-    .left-hand{}
+~~~~ .language-css
+.person{}
+.hand{}
+.female{}
+.female-hand{}
+.left-hand{}
+~~~~
 
 Все эти классы имеют смысл, но выглядят несколько разобщёнными. Расмотрим
 `.female`; к чему относится класс `female`? Что насчёт `.hand`? Может быть это
@@ -74,19 +82,23 @@
 
 Давайте рассмотрим пример формы поиска на сайте ещё раз:
 
-    <form class="site-search  full">
-        <input type="text" class="field">
-        <input type="Submit" value ="Search" class="button">
-    </form>
+~~~~ .language-markup
+<form class="site-search  full">
+    <input type="text" class="field">
+    <input type="Submit" value ="Search" class="button">
+</form>
+~~~~
 
 Эти классы достаточно нейтральные и ни о чём нам не говорят. Даже несмотря на
 то, что мы можем это использовать, эти классы очень не точны. С БЭМ синтаксисом
 всё преображается:
 
-    <form class="site-search  site-search--full">
-        <input type="text" class="site-search__field">
-        <input type="Submit" value ="Search" class="site-search__button">
-    </form>
+~~~~ .language-markup
+<form class="site-search  site-search--full">
+    <input type="text" class="site-search__field">
+    <input type="Submit" value ="Search" class="site-search__button">
+</form>
+~~~~
 
 Теперь видно, что у нас есть блок названный `.site-search`, у которого есть
 вложенный элемент `.site-search__field`. Также наглядно видно, что существует
@@ -99,10 +111,12 @@
 
 Обретая форму БЭМ, медиа объект теперь выглядит так:
 
-    .media{}
-    .media__img{}
-    .media__img--rev{}
-    .media__body{}
+~~~~ .language-css
+.media{}
+.media__img{}
+.media__img--rev{}
+.media__body{}
+~~~~
 
 Используя такой способ записи стилей, мы уже знаем, что `.media__img` и
 `.media__body` находят внутри `.media` и также то, что `.media__img--rev` это
@@ -112,13 +126,15 @@
 Другим плюсом является ясность взаимосвязей внури разметки. Рассмотрим пример с
 медиа объектом ещё раз:
 
-    <div class="media">
-        <img src="logo.png" alt="Логотип «Рога и копыта»" class="img-rev">
-        <div class="body">
-            <h3 class="alpha">Добро пожаловать в компанию «Рога и копыта»</h3>
-            <p class="lede">«Рога и копыта» — молодая, динамично развивающаяся компания</p>
-        </div>
+~~~~ .language-markup
+<div class="media">
+    <img src="logo.png" alt="Логотип «Рога и копыта»" class="img-rev">
+    <div class="body">
+        <h3 class="alpha">Добро пожаловать в компанию «Рога и копыта»</h3>
+        <p class="lede">«Рога и копыта» — молодая, динамично развивающаяся компания</p>
     </div>
+</div>
+~~~~
 
 Из этого кода, мы никогда не сможем понять как классы `.media` и `.alpha`
 относятся к друг другу. Да и относятся ли? А что насчёт классов `.body`,
@@ -126,13 +142,15 @@
 представить, что есть компонент сам по себе, а что есть дополнительные элементы
 и опции. Если мы переделаем код для работы с БЭМ:
 
-    <div class="media">
-        <img src="logo.png" alt="Логотип «Рога и копыта»" class="media__img--rev">
-        <div class="media__body">
-            <h3 class="alpha">Добро пожаловать в компанию «Рога и копыта»</h3>
-            <p class="lede">«Рога и копыта» — молодая, динамично развивающаяся компания</p>
-        </div>
+~~~~ .language-markup
+<div class="media">
+    <img src="logo.png" alt="Логотип «Рога и копыта»" class="media__img--rev">
+    <div class="media__body">
+        <h3 class="alpha">Добро пожаловать в компанию «Рога и копыта»</h3>
+        <p class="lede">«Рога и копыта» — молодая, динамично развивающаяся компания</p>
     </div>
+</div>
+~~~~
 
 Теперь мы можем мгновенно увидеть, что `.media` — блок, а `.media__img--rev`
 элемент блока `.media`, этот элемент также имеет модификатор; также ясно видно,
@@ -168,18 +186,23 @@
 Тем не менее, при использовании БЭМ, важно помнить, что нет нужды использовать
 его повсюду, например:
 
-    .caps{ text-transform:uppercase; }
+~~~~ .language-css
+.caps{ text-transform:uppercase; }
+~~~~
 
 Этот CSS никогда не поместить в БЭМ методологию, это просто одиночное правило.
 
 Другой пример:
-
-    .site-logo{}
+~~~~ .language-css
+.site-logo{}
+~~~~
 
 Это наш логотип; он может быть преобразован так:
 
-    .header{}
-    .header__logo{}
+~~~~ .language-css
+.header{}
+.header__logo{}
+~~~~
 
 Но это не является необходимым. Фишка БЭМ’а в правильном распределении дочерних
 элементов. Не все вложенные элементы являются БЭМ *элементами* на самом деле.
@@ -189,9 +212,11 @@
 аккуратны и применяйте БЭМ только в тех местах, в которых вы нуждаетесь.
 Другой пример:
 
-    <div class="content">
-        <h1 class="content__headline">Можно предположить, что лемма проецирует…</h1>
-    </div>
+~~~~ .language-markup
+<div class="content">
+    <h1 class="content__headline">Можно предположить, что лемма проецирует…</h1>
+</div>
+~~~~
 
 Возможно нам нужно было назвать второй класс `.headline`; это зависит от того,
 зависит ли оформление от того, что заголовок находится в `.content` или
@@ -202,8 +227,10 @@
 раз, представьте, что вы хотите сделать праздничную версию логотипа для
 рождественского дизайна сайта. Мы можем сделать так:
 
-    .site-logo{}
-    .site-logo--xmas{}
+~~~~ .language-css
+.site-logo{}
+.site-logo--xmas{}
+~~~~
 
 Мы можем бысто создавать разные варианты, используя `--` синтаксис модификатора.
 
