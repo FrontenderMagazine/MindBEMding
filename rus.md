@@ -70,18 +70,18 @@
 `.female`; к чему относится класс `female`? Что насчёт `.hand`? Может быть это
 дверная ручка или письменная? Используя БЭМ мы предоставляем разработчикам
 не только более подробную, но и более точную информацию; мы устанавливаем связи
-между элементами за счет одного токльо именования классов. Очень круто.
+между элементами за счет одного только именования классов. Очень круто.
 
 Давайте рассмотрим пример формы поиска на сайте ещё раз:
 
-    <form class="site-search full">
+    <form class="site-search  full">
         <input type="text" class="field">
         <input type="Submit" value ="Search" class="button">
     </form>
 
 Это обычные классы, по ним много не скажешь. Да, мы вполне можем так работать, но с БЭМ мы получим:
 
-    <form class="site-search site-search--full">
+    <form class="site-search  site-search--full">
         <input type="text" class="site-search__field">
         <input type="Submit" value ="Search" class="site-search__button">
     </form>
